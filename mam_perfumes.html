@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAM Perfumes — عطور فاخرة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+Arabic:wght@200;300;400;600&family=Noto+Serif+Arabic:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #07080d;
+  --deep: #0c0e15;
+  --forest: #152419;
+  --emerald: #1e3d2a;
+  --emerald-mid: #2d5c3f;
+  --gold: #c8a96e;
+  --gold-bright: #e8cc8a;
+  --gold-pale: #f0dfa8;
+  --cream: #f2ebe0;
+  --muted: rgba(242,235,224,0.45);
+  --glass: rgba(255,255,255,0.04);
+  --border: rgba(200,169,110,0.18);
+  --ff-ar: 'Noto Serif Arabic', 'Noto Sans Arabic', serif;
+  --ff-en: 'Cormorant Garamond', Georgia, serif;
+  --ff-display: 'Cinzel', serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--ff-ar);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CURSOR ── */
+.cursor {
+  position: fixed; pointer-events:none; z-index:9999;
+  width:8px; height:8px;
+  background: var(--gold);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  position:fixed; pointer-events:none; z-index:9998;
+  width:36px; height:36px;
+  border: 1px solid rgba(200,169,110,0.5);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition: all 0.12s ease-out;
+}
+body:hover .cursor { opacity:1; }
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:1; pointer-events:none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.025;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 60px;
+  background: linear-gradient(180deg,rgba(7,8,13,0.97) 0%,rgba(7,8,13,0) 100%);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--ff-display);
+  font-size:30px; letter-spacing:10px;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(200,169,110,0.3);
+}
+.nav-links { display:flex; gap:40px; list-style:none; }
+.nav-links li a {
+  font-family: var(--ff-en);
+  font-size:12px; letter-spacing:3px;
+  color: rgba(242,235,224,0.65);
+  text-decoration:none; text-transform:uppercase;
+  transition: color 0.3s;
+  cursor: none;
+}
+.nav-links li a:hover { color: var(--gold); }
+.nav-right { display:flex; align-items:center; gap:20px; }
+
+/* ── LANG ── */
+.lang-switcher { display:flex; gap:4px; }
+.lang-btn {
+  background:none; border:1px solid rgba(200,169,110,0.25);
+  color:rgba(242,235,224,0.5); padding:5px 12px;
+  font-size:10px; letter-spacing:1.5px; cursor:none;
+  font-family: var(--ff-display);
+  transition:all 0.25s;
+}
+.lang-btn.active, .lang-btn:hover {
+  background: var(--gold); color: var(--ink);
+  border-color: var(--gold);
+}
+
+/* ── CART BTN ── */
+.cart-nav-btn {
+  display:flex; align-items:center; gap:10px;
+  background:none; border:1px solid var(--border);
+  color: var(--gold); padding:9px 22px;
+  font-family: var(--ff-en); font-size:12px;
+  letter-spacing:2px; cursor:none;
+  transition:all 0.3s;
+}
+.cart-nav-btn:hover { background:var(--gold); color:var(--ink); border-color:var(--gold); }
+.cart-badge {
+  background:var(--gold); color:var(--ink);
+  border-radius:50%; width:18px; height:18px;
+  font-size:9px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--ff-display);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh; position:relative;
+  display:flex; align-items:center; overflow:hidden;
+  background: radial-gradient(ellipse 80% 100% at 60% 50%, var(--emerald) 0%, var(--forest) 30%, var(--ink) 70%);
+}
+.hero-bg-lines {
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    repeating-linear-gradient(90deg,transparent,transparent 119px,rgba(200,169,110,0.03) 120px),
+    repeating-linear-gradient(0deg,transparent,transparent 119px,rgba(200,169,110,0.03) 120px);
+}
+.hero-glow {
+  position:absolute; width:600px; height:600px;
+  background:radial-gradient(circle, rgba(45,92,63,0.4) 0%, transparent 70%);
+  right:-100px; top:50%; transform:translateY(-50%);
+  pointer-events:none;
+}
+.hero-content {
+  position:relative; z-index:2;
+  padding:0 0 0 10%;
+  max-width:560px;
+}
+.hero-eyebrow {
+  display:flex; align-items:center; gap:16px;
+  margin-bottom:32px;
+}
+.hero-eyebrow-line { width:40px; height:1px; background:var(--gold); }
+.hero-eyebrow span {
+  font-family:var(--ff-en); font-size:11px;
+  letter-spacing:5px; color:var(--gold);
+  text-transform:uppercase; opacity:0.8;
+}
+.hero-title {
+  font-family: var(--ff-display);
+  font-size: clamp(72px,9vw,130px);
+  line-height:0.88; font-weight:900;
+  color: var(--cream);
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+.hero-title em {
+  font-style:italic; color:var(--gold);
+  font-weight:400; font-family:var(--ff-en);
+  font-size:0.55em; display:block;
+  letter-spacing:4px;
+}
+.hero-ar-name {
+  font-family: var(--ff-ar);
+  font-size:clamp(22px,3vw,38px);
+  color:rgba(242,235,224,0.35);
+  font-weight:200; margin-bottom:36px;
+  letter-spacing:2px;
+}
+.hero-desc {
+  font-family:var(--ff-en);
+  font-size:16px; line-height:2;
+  color:rgba(242,235,224,0.55);
+  font-weight:300; font-style:italic;
+  margin-bottom:52px;
+  max-width:420px;
+  border-right:2px solid rgba(200,169,110,0.3);
+  padding-right:20px;
+}
+.lang-en .hero-desc, .lang-tr .hero-desc {
+  border-right:none; border-left:2px solid rgba(200,169,110,0.3);
+  padding-right:0; padding-left:20px;
+}
+.hero-actions { display:flex; gap:16px; align-items:center; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%);
+  background-size:200% auto;
+  color:var(--ink); border:none;
+  padding:17px 52px; cursor:none;
+  font-family:var(--ff-display); font-size:11px;
+  letter-spacing:3px; text-transform:uppercase;
+  font-weight:600; transition:all 0.4s;
+  position:relative; overflow:hidden;
+}
+.btn-primary::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,0.2) 50%,transparent 60%);
+  transform:translateX(-100%); transition:transform 0.5s;
+}
+.btn-primary:hover { background-position:right; transform:translateY(-2px); box-shadow:0 10px 40px rgba(200,169,110,0.35); }
+.btn-primary:hover::after { transform:translateX(100%); }
+.btn-ghost {
+  background:none; border:1px solid var(--border);
+  color: var(--cream); padding:17px 40px; cursor:none;
+  font-family:var(--ff-en); font-size:12px;
+  letter-spacing:3px; text-transform:uppercase;
+  transition:all 0.3s;
+}
+.btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+
+/* ── HERO BOTTLE ── */
+.hero-visual {
+  position:absolute; right:8%; top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  animation: heroFloat 8s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0%,100%{transform:translateY(-50%) rotate(-2deg);}
+  50%{transform:translateY(-53%) rotate(2deg);}
+}
+.hero-visual-shadow {
+  position:absolute; bottom:-60px; left:50%;
+  transform:translateX(-50%);
+  width:160px; height:30px;
+  background:radial-gradient(ellipse,rgba(45,92,63,0.5) 0%,transparent 70%);
+  filter:blur(15px);
+  animation: shadowPulse 8s ease-in-out infinite;
+}
+@keyframes shadowPulse {
+  0%,100%{transform:translateX(-50%) scaleX(1); opacity:0.5;}
+  50%{transform:translateX(-50%) scaleX(0.85); opacity:0.3;}
+}
+
+/* ── PRODUCT BOTTLE SVG ── */
+.bottle-wrap {
+  width:200px; height:280px; position:relative;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.7)) drop-shadow(0 0 30px rgba(45,92,63,0.4));
+}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-ind {
+  position:absolute; bottom:40px; left:50%;
+  transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  color:rgba(242,235,224,0.3); font-family:var(--ff-en);
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+}
+.scroll-line {
+  width:1px; height:40px;
+  background:linear-gradient(180deg,transparent,var(--gold),transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100%{opacity:0.3; transform:scaleY(0.7);}
+  50%{opacity:1; transform:scaleY(1);}
+}
+
+/* ── MARQUEE ── */
+.marquee-strip {
+  background:var(--gold);
+  padding:14px 0; overflow:hidden;
+  border-top:1px solid rgba(200,169,110,0.3);
+  border-bottom:1px solid rgba(200,169,110,0.3);
+}
+.marquee-inner {
+  display:flex; gap:0;
+  animation: marquee 22s linear infinite;
+  white-space:nowrap; width:max-content;
+}
+.marquee-inner span {
+  font-family:var(--ff-display);
+  font-size:11px; letter-spacing:5px;
+  color:var(--ink); text-transform:uppercase;
+  padding:0 40px;
+}
+.marquee-sep { color:var(--ink); opacity:0.4; }
+@keyframes marquee {
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* ── SECTIONS ── */
+section { position:relative; z-index:2; }
+
+.section-pad { padding:120px 80px; }
+
+.sec-label {
+  display:flex; align-items:center; gap:16px;
+  margin-bottom:16px;
+}
+.sec-label-line { width:30px; height:1px; background:var(--gold); }
+.sec-label span {
+  font-family:var(--ff-en); font-size:10px;
+  letter-spacing:5px; color:var(--gold);
+  text-transform:uppercase;
+}
+.sec-title {
+  font-family:var(--ff-display);
+  font-size:clamp(40px,5vw,64px);
+  color:var(--cream); line-height:1;
+  margin-bottom:10px;
+}
+.sec-subtitle {
+  font-family:var(--ff-ar);
+  font-size:clamp(18px,2.5vw,28px);
+  color:rgba(242,235,224,0.25);
+  font-weight:200; margin-bottom:60px;
+}
+.gold-divider {
+  width:80px; height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin-bottom:50px;
+}
+.lang-en .gold-divider, .lang-tr .gold-divider {
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 50px;
+}
+
+/* ── PRODUCTS ── */
+.products-section {
+  background: linear-gradient(180deg, var(--ink) 0%, var(--deep) 100%);
+}
+.products-header { margin-bottom:80px; }
+.products-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  max-width:1300px; margin:0 auto;
+}
+.p-card {
+  position:relative; overflow:hidden;
+  background:var(--forest);
+  border:1px solid var(--border);
+  transition:all 0.5s cubic-bezier(.23,1,.32,1);
+  cursor:none;
+  group: true;
+}
+.p-card:hover {
+  border-color:rgba(200,169,110,0.5);
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,169,110,0.2);
+  z-index:5;
+}
+.p-card-visual {
+  height:360px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+  padding:40px;
+}
+.p-card-bg {
+  position:absolute; inset:0;
+  transition:transform 0.5s;
+}
+.p-card:hover .p-card-bg { transform:scale(1.05); }
+.p-bottle-wrap {
+  position:relative; z-index:2;
+  transition:transform 0.5s cubic-bezier(.23,1,.32,1);
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+}
+.p-card:hover .p-bottle-wrap {
+  transform:translateY(-12px) scale(1.06);
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.7)) drop-shadow(0 0 20px rgba(200,169,110,0.2));
+}
+.p-badge {
+  position:absolute; top:20px; left:20px; z-index:5;
+  background:var(--gold); color:var(--ink);
+  font-family:var(--ff-display); font-size:8px;
+  letter-spacing:2px; text-transform:uppercase;
+  padding:5px 12px;
+}
+.p-info { padding:32px 28px 28px; }
+.p-name-ar {
+  font-family:var(--ff-ar); font-size:26px; font-weight:400;
+  color:var(--cream); margin-bottom:4px;
+  letter-spacing:1px;
+}
+.p-name-en {
+  font-family:var(--ff-display); font-size:11px;
+  letter-spacing:4px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:16px;
+  opacity:0.8;
+}
+.p-notes {
+  font-family:var(--ff-en); font-size:13px;
+  color:var(--muted); line-height:1.7;
+  font-style:italic; margin-bottom:24px;
+  min-height:44px;
+}
+.p-footer {
+  display:flex; align-items:center; justify-content:space-between;
+  border-top:1px solid rgba(200,169,110,0.1);
+  padding-top:20px;
+}
+.p-price {
+  display:flex; flex-direction:column;
+}
+.p-price-main {
+  font-family:var(--ff-display); font-size:26px; color:var(--gold);
+  line-height:1;
+}
+.p-price-sub {
+  font-family:var(--ff-en); font-size:10px;
+  color:rgba(242,235,224,0.3); letter-spacing:1px;
+  margin-top:3px;
+}
+.add-to-cart {
+  background:none; border:1px solid rgba(200,169,110,0.35);
+  color:var(--gold); padding:11px 24px; cursor:none;
+  font-family:var(--ff-en); font-size:10px;
+  letter-spacing:2px; text-transform:uppercase;
+  transition:all 0.3s; position:relative; overflow:hidden;
+}
+.add-to-cart::before {
+  content:''; position:absolute; inset:0;
+  background:var(--gold); transform:translateX(-101%);
+  transition:transform 0.3s cubic-bezier(.23,1,.32,1);
+  z-index:0;
+}
+.add-to-cart span { position:relative; z-index:1; transition:color 0.3s; }
+.add-to-cart:hover::before { transform:translateX(0); }
+.add-to-cart:hover span { color:var(--ink); }
+.add-to-cart.done { background:var(--gold); border-color:var(--gold); }
+.add-to-cart.done span { color:var(--ink); }
+
+/* ── ABOUT ── */
+.about-section {
+  background:
+    linear-gradient(135deg, rgba(21,36,25,0.95) 0%, rgba(12,14,21,0.98) 100%);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.about-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:100px; align-items:center;
+  max-width:1200px; margin:0 auto;
+}
+.about-text p {
+  font-family:var(--ff-en); font-size:16px;
+  color:rgba(242,235,224,0.6); line-height:2.1;
+  font-weight:300; margin-bottom:20px;
+}
+.about-quote {
+  border-right:3px solid var(--gold);
+  padding-right:24px; margin:36px 0;
+  font-family:var(--ff-en); font-size:20px;
+  color:var(--cream); line-height:1.7;
+  font-style:italic; font-weight:300;
+}
+.lang-en .about-quote, .lang-tr .about-quote {
+  border-right:none; border-left:3px solid var(--gold);
+  padding-right:0; padding-left:24px;
+}
+.about-stats {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2px; margin-top:50px;
+}
+.stat-box {
+  background:rgba(200,169,110,0.05);
+  border:1px solid var(--border);
+  padding:28px 24px;
+  transition:all 0.3s;
+}
+.stat-box:hover {
+  background:rgba(200,169,110,0.08);
+  border-color:rgba(200,169,110,0.3);
+}
+.stat-n {
+  font-family:var(--ff-display);
+  font-size:42px; color:var(--gold);
+  line-height:1; margin-bottom:6px;
+}
+.stat-l {
+  font-family:var(--ff-en); font-size:10px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(242,235,224,0.35);
+}
+
+/* ── ABOUT VISUAL ── */
+.about-visual {
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.about-bottle-ring {
+  position:absolute;
+  width:320px; height:320px;
+  border:1px solid rgba(200,169,110,0.12);
+  border-radius:50%;
+  animation:spin 30s linear infinite;
+}
+.about-bottle-ring::before {
+  content:'';
+  position:absolute; top:-4px; left:50%;
+  width:8px; height:8px;
+  background:var(--gold);
+  border-radius:50%;
+  transform:translateX(-50%);
+}
+.about-bottle-ring2 {
+  position:absolute;
+  width:380px; height:380px;
+  border:1px solid rgba(200,169,110,0.06);
+  border-radius:50%;
+  animation:spin 45s linear infinite reverse;
+}
+@keyframes spin { to{transform:rotate(360deg);} }
+
+/* ── EXPERIENCE ── */
+.exp-section {
+  background:var(--ink);
+  padding:120px 80px;
+}
+.exp-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2px; max-width:1200px; margin:0 auto;
+}
+.exp-card {
+  padding:48px 36px;
+  border:1px solid var(--border);
+  background:var(--glass);
+  position:relative; overflow:hidden;
+  transition:all 0.4s;
+}
+.exp-card::before {
+  content:''; position:absolute;
+  inset:0; background:linear-gradient(135deg,rgba(200,169,110,0.05),transparent);
+  opacity:0; transition:opacity 0.4s;
+}
+.exp-card:hover::before { opacity:1; }
+.exp-card:hover { border-color:rgba(200,169,110,0.3); }
+.exp-icon {
+  font-size:32px; margin-bottom:24px;
+  filter:grayscale(0.3);
+}
+.exp-title {
+  font-family:var(--ff-display);
+  font-size:16px; letter-spacing:2px;
+  color:var(--gold); margin-bottom:16px;
+  text-transform:uppercase;
+}
+.exp-text {
+  font-family:var(--ff-en);
+  font-size:14px; line-height:1.9;
+  color:var(--muted); font-weight:300;
+}
+
+/* ── NEWSLETTER ── */
+.newsletter {
+  background:linear-gradient(135deg, var(--emerald) 0%, var(--forest) 60%, var(--ink) 100%);
+  padding:100px 80px;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+.newsletter h2 {
+  font-family:var(--ff-display);
+  font-size:clamp(36px,5vw,56px);
+  color:var(--cream); margin-bottom:20px;
+}
+.newsletter p {
+  font-family:var(--ff-en);
+  font-size:16px; color:var(--muted);
+  font-style:italic; margin-bottom:44px;
+}
+.nl-form {
+  display:flex; gap:2px; max-width:500px;
+  margin:0 auto;
+}
+.nl-input {
+  flex:1; background:rgba(7,8,13,0.6);
+  border:1px solid var(--border); border-right:none;
+  color:var(--cream); padding:16px 24px;
+  font-family:var(--ff-en); font-size:14px;
+  outline:none; transition:border-color 0.3s;
+}
+.nl-input:focus { border-color:rgba(200,169,110,0.5); }
+.nl-input::placeholder { color:rgba(242,235,224,0.25); }
+.nl-btn {
+  background:var(--gold); color:var(--ink);
+  border:none; padding:16px 32px; cursor:none;
+  font-family:var(--ff-display); font-size:10px;
+  letter-spacing:2px; text-transform:uppercase;
+  font-weight:600; transition:all 0.3s;
+}
+.nl-btn:hover { background:var(--gold-bright); }
+
+/* ── FOOTER ── */
+footer {
+  background:#050609;
+  border-top:1px solid rgba(200,169,110,0.1);
+  padding:80px 80px 40px;
+}
+.footer-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr;
+  gap:80px; margin-bottom:60px;
+}
+.footer-brand .logo {
+  font-family:var(--ff-display);
+  font-size:36px; letter-spacing:10px;
+  color:var(--gold); margin-bottom:20px;
+  display:block;
+}
+.footer-brand p {
+  font-family:var(--ff-en); font-size:14px;
+  color:var(--muted); line-height:1.9;
+  font-style:italic; max-width:320px;
+}
+.footer-col h4 {
+  font-family:var(--ff-display); font-size:10px;
+  letter-spacing:4px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:24px;
+}
+.footer-col ul { list-style:none; }
+.footer-col ul li {
+  margin-bottom:12px;
+}
+.footer-col ul li a {
+  font-family:var(--ff-en); font-size:13px;
+  color:var(--muted); text-decoration:none;
+  letter-spacing:1px; transition:color 0.3s; cursor:none;
+}
+.footer-col ul li a:hover { color:var(--gold); }
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,0.05);
+  padding-top:32px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.footer-copy {
+  font-family:var(--ff-en); font-size:11px;
+  color:rgba(242,235,224,0.2); letter-spacing:1px;
+}
+.footer-social { display:flex; gap:16px; }
+.social-link {
+  width:36px; height:36px;
+  border:1px solid rgba(200,169,110,0.2);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--muted); font-size:14px; text-decoration:none; cursor:none;
+  transition:all 0.3s;
+}
+.social-link:hover { border-color:var(--gold); color:var(--gold); }
+
+/* ── CART OVERLAY ── */
+.cart-overlay {
+  position:fixed; inset:0; z-index:800;
+  background:rgba(5,6,9,0.85);
+  backdrop-filter:blur(8px);
+  display:none; justify-content:flex-end;
+}
+.cart-overlay.open { display:flex; }
+.cart-drawer {
+  width:460px; max-width:100%;
+  height:100vh; background:var(--deep);
+  border-left:1px solid var(--border);
+  display:flex; flex-direction:column;
+  animation:slideIn 0.4s cubic-bezier(.23,1,.32,1);
+}
+@keyframes slideIn {
+  from{transform:translateX(100%);}
+  to{transform:translateX(0);}
+}
+.cart-head {
+  padding:36px 36px 28px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.cart-head-title {
+  font-family:var(--ff-display);
+  font-size:22px; color:var(--cream);
+  letter-spacing:2px;
+}
+.cart-close {
+  width:40px; height:40px; background:none;
+  border:1px solid var(--border); color:var(--cream);
+  font-size:18px; cursor:none; transition:all 0.3s;
+  display:flex; align-items:center; justify-content:center;
+}
+.cart-close:hover { background:var(--gold); color:var(--ink); border-color:var(--gold); }
+.cart-body { flex:1; overflow-y:auto; padding:28px 36px; }
+.cart-empty-msg {
+  text-align:center; padding:80px 0;
+  font-family:var(--ff-en); font-size:15px;
+  color:var(--muted); font-style:italic;
+}
+.cart-item {
+  display:flex; gap:20px;
+  padding:20px 0; border-bottom:1px solid rgba(200,169,110,0.08);
+}
+.cart-item-visual {
+  width:70px; flex-shrink:0;
+  background:var(--forest);
+  display:flex; align-items:center; justify-content:center;
+  padding:8px;
+}
+.cart-item-details { flex:1; }
+.cart-item-name {
+  font-family:var(--ff-ar); font-size:16px;
+  color:var(--cream); margin-bottom:4px;
+}
+.cart-item-sub {
+  font-family:var(--ff-en); font-size:11px;
+  letter-spacing:2px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:12px;
+}
+.cart-item-price {
+  font-family:var(--ff-display);
+  font-size:20px; color:var(--gold);
+}
+.cart-qty-ctrl {
+  display:flex; align-items:center; gap:12px; margin-top:8px;
+}
+.qty-b {
+  width:28px; height:28px; background:rgba(200,169,110,0.08);
+  border:1px solid rgba(200,169,110,0.25); color:var(--gold);
+  cursor:none; font-size:16px; transition:all 0.2s;
+  display:flex; align-items:center; justify-content:center;
+}
+.qty-b:hover { background:var(--gold); color:var(--ink); }
+.qty-n { font-family:var(--ff-display); color:var(--cream); font-size:14px; min-width:20px; text-align:center; }
+.cart-item-del { background:none; border:none; color:rgba(242,235,224,0.2); cursor:none; font-size:18px; align-self:flex-start; transition:color 0.2s; }
+.cart-item-del:hover { color:#e05; }
+.cart-foot {
+  padding:28px 36px;
+  border-top:1px solid var(--border);
+  background:rgba(200,169,110,0.03);
+}
+.cart-total-row {
+  display:flex; justify-content:space-between;
+  margin-bottom:24px; align-items:center;
+}
+.cart-total-lbl {
+  font-family:var(--ff-en); font-size:11px;
+  letter-spacing:3px; color:var(--muted);
+  text-transform:uppercase;
+}
+.cart-total-val {
+  font-family:var(--ff-display);
+  font-size:28px; color:var(--gold);
+}
+.checkout-btn {
+  width:100%; background:linear-gradient(135deg,var(--gold),var(--gold-bright));
+  color:var(--ink); border:none; padding:18px;
+  font-family:var(--ff-display); font-size:11px;
+  letter-spacing:4px; text-transform:uppercase;
+  font-weight:700; cursor:none; transition:all 0.3s;
+}
+.checkout-btn:hover { opacity:0.9; transform:translateY(-2px); box-shadow:0 8px 30px rgba(200,169,110,0.3); }
+
+/* ── TOAST ── */
+.toast {
+  position:fixed; bottom:32px; left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--gold); color:var(--ink);
+  padding:14px 36px; z-index:900;
+  font-family:var(--ff-display); font-size:10px;
+  letter-spacing:3px; text-transform:uppercase;
+  opacity:0; transition:all 0.4s cubic-bezier(.23,1,.32,1);
+  pointer-events:none;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ── LANG SWITCHING ── */
+[data-lang] { display:none; }
+.lang-ar [data-lang="ar"] { display:block; }
+.lang-en [data-lang="en"] { display:block; }
+.lang-tr [data-lang="tr"] { display:block; }
+[data-lang-i] { display:none; }
+.lang-ar [data-lang-i="ar"] { display:inline; }
+.lang-en [data-lang-i="en"] { display:inline; }
+.lang-tr [data-lang-i="tr"] { display:inline; }
+.lang-ar { direction:rtl; }
+.lang-en, .lang-tr { direction:ltr; }
+.lang-en .nl-input, .lang-tr .nl-input { border-right:none; border-left:none; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px) {
+  .products-grid { grid-template-columns:repeat(2,1fr); }
+  .about-grid { grid-template-columns:1fr; }
+  .about-visual { display:none; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:40px; }
+  .footer-brand { grid-column:1/-1; }
+}
+@media(max-width:768px) {
+  nav { padding:16px 24px; }
+  .nav-links { display:none; }
+  .section-pad { padding:80px 24px; }
+  .products-grid { grid-template-columns:1fr; }
+  .exp-grid { grid-template-columns:1fr; }
+  footer { padding:60px 24px 30px; }
+  .footer-grid { grid-template-columns:1fr; gap:32px; }
+  .hero-content { padding:0 0 0 24px; }
+  .hero-visual { display:none; }
+  .nl-form { flex-direction:column; }
+  .nl-input { border-right:1px solid var(--border); }
+}
+</style>
+</head>
+<body class="lang-ar">
+
+<!-- CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-logo">MAM</div>
+  <ul class="nav-links">
+    <li><a href="#products" onclick="smoothScroll(event,'products')">
+      <span data-lang-i="ar">العطور</span>
+      <span data-lang-i="en">Collection</span>
+      <span data-lang-i="tr">Koleksiyon</span>
+    </a></li>
+    <li><a href="#about" onclick="smoothScroll(event,'about')">
+      <span data-lang-i="ar">قصتنا</span>
+      <span data-lang-i="en">Our Story</span>
+      <span data-lang-i="tr">Hikayemiz</span>
+    </a></li>
+    <li><a href="#experience" onclick="smoothScroll(event,'experience')">
+      <span data-lang-i="ar">التجربة</span>
+      <span data-lang-i="en">Experience</span>
+      <span data-lang-i="tr">Deneyim</span>
+    </a></li>
+    <li><a href="#contact" onclick="smoothScroll(event,'contact')">
+      <span data-lang-i="ar">تواصل</span>
+      <span data-lang-i="en">Contact</span>
+      <span data-lang-i="tr">İletişim</span>
+    </a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ar')">AR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+    </div>
+    <button class="cart-nav-btn" onclick="openCart()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span data-lang-i="ar">سلة</span>
+      <span data-lang-i="en">Cart</span>
+      <span data-lang-i="tr">Sepet</span>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span data-lang="ar">عطور فاخرة من الشرق</span>
+      <span data-lang="en">Luxury Eastern Perfumery</span>
+      <span data-lang="tr">Lüks Doğu Parfümeri</span>
+    </div>
+    <h1 class="hero-title">
+      MAM<br>
+      <em data-lang-i="ar">عطور تُحكى</em>
+      <em data-lang-i="en">Fragrances Told</em>
+      <em data-lang-i="tr">Anlatılan Kokular</em>
+    </h1>
+    <p class="hero-ar-name">إيوان · نخيل · زعفران</p>
+    <p class="hero-desc">
+      <span data-lang="ar">كل عطر حكاية، كل قطرة ذاكرة لا تُنسى. نصنع لك تجربة شمية من أجود المكونات الشرقية والغربية.</span>
+      <span data-lang="en">Every fragrance a story, every drop an unforgettable memory. We craft olfactory experiences from the finest Eastern and Western ingredients.</span>
+      <span data-lang="tr">Her parfüm bir hikaye, her damla unutulmaz bir anı. Doğu ve Batı'nın en seçkin malzemelerinden koku deneyimleri yaratıyoruz.</span>
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="smoothScroll(event,'products')">
+        <span data-lang-i="ar">اكتشف المجموعة</span>
+        <span data-lang-i="en">Explore Collection</span>
+        <span data-lang-i="tr">Koleksiyonu Keşfet</span>
+      </button>
+      <button class="btn-ghost" onclick="smoothScroll(event,'about')">
+        <span data-lang-i="ar">قصتنا</span>
+        <span data-lang-i="en">Our Story</span>
+        <span data-lang-i="tr">Hikayemiz</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- HERO BOTTLE -->
+  <div class="hero-visual">
+    <div style="position:relative;">
+      <div id="heroBotleSvg"></div>
+      <div class="hero-visual-shadow"></div>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span data-lang-i="ar">مرر للأسفل</span>
+    <span data-lang-i="en">Scroll</span>
+    <span data-lang-i="tr">Kaydır</span>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee-strip">
+  <div class="marquee-inner" id="marqueeInner"></div>
+</div>
+
+<!-- ══ PRODUCTS ══ -->
+<section class="products-section section-pad" id="products">
+  <div class="products-header">
+    <div class="sec-label">
+      <div class="sec-label-line"></div>
+      <span data-lang="ar">مجموعتنا الحصرية</span>
+      <span data-lang="en">Exclusive Collection</span>
+      <span data-lang="tr">Özel Koleksiyon</span>
+    </div>
+    <h2 class="sec-title">
+      <span data-lang="ar">العطور الفاخرة</span>
+      <span data-lang="en">Luxury Perfumes</span>
+      <span data-lang="tr">Lüks Parfümler</span>
+    </h2>
+    <div class="sec-subtitle">
+      <span data-lang="ar">اختر عطرك المميز</span>
+      <span data-lang="en">Find Your Signature Scent</span>
+      <span data-lang="tr">İmza Kokunuzu Bulun</span>
+    </div>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about-section section-pad" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="sec-label">
+        <div class="sec-label-line"></div>
+        <span data-lang="ar">من نحن</span>
+        <span data-lang="en">Who We Are</span>
+        <span data-lang="tr">Biz Kimiz</span>
+      </div>
+      <h2 class="sec-title">
+        <span data-lang="ar">قصة MAM</span>
+        <span data-lang="en">The MAM Story</span>
+        <span data-lang="tr">MAM'ın Hikayesi</span>
+      </h2>
+      <div class="gold-divider"></div>
+      <p data-lang="ar">ولدت MAM من شغف عميق وحقيقي بفن العطور الشرقية والغربية. نؤمن بأن العطر هو أكثر الفنون حميمية — يلمس الروح قبل الجسد، ويترك أثراً في كل مكان تمر به.</p>
+      <p data-lang="en">MAM was born from a deep and genuine passion for the art of Eastern and Western perfumery. We believe fragrance is the most intimate art form — touching the soul before the body, leaving a mark wherever you go.</p>
+      <p data-lang="tr">MAM, Doğu ve Batı parfümeri sanatına duyulan derin ve gerçek bir tutkudan doğdu. Kokunun en samimi sanat formu olduğuna inanıyoruz — bedenden önce ruha dokunuyor.</p>
+      <div class="about-quote">
+        <span data-lang="ar">"العطر هو الفن الذي يعيش في الذاكرة أطول من أي شيء آخر."</span>
+        <span data-lang="en">"Fragrance is the art that lives in memory longer than anything else."</span>
+        <span data-lang="tr">"Koku, başka her şeyden daha uzun süre bellekte yaşayan sanattır."</span>
+      </div>
+      <p data-lang="ar">كل عطر من مجموعتنا مصنوع بعناية فائقة، باستخدام أعلى جودة من المكونات الطبيعية المختارة بيدنا من أفضل مناطق العالم.</p>
+      <p data-lang="en">Each fragrance is crafted with meticulous care, using the highest quality natural ingredients hand-selected from the finest regions of the world.</p>
+      <p data-lang="tr">Her parfüm, dünyanın en iyi bölgelerinden elle seçilen en yüksek kalitede doğal malzemeler kullanılarak titizlikle hazırlanmaktadır.</p>
+      <div class="about-stats">
+        <div class="stat-box"><div class="stat-n">12</div><div class="stat-l" data-lang="ar">عطراً فاخراً</div><div class="stat-l" data-lang="en">Luxury Scents</div><div class="stat-l" data-lang="tr">Lüks Koku</div></div>
+        <div class="stat-box"><div class="stat-n">5+</div><div class="stat-l" data-lang="ar">سنوات خبرة</div><div class="stat-l" data-lang="en">Years of Craft</div><div class="stat-l" data-lang="tr">Yıllık Deneyim</div></div>
+        <div class="stat-box"><div class="stat-n">3K+</div><div class="stat-l" data-lang="ar">عميل سعيد</div><div class="stat-l" data-lang="en">Happy Clients</div><div class="stat-l" data-lang="tr">Mutlu Müşteri</div></div>
+        <div class="stat-box"><div class="stat-n">100%</div><div class="stat-l" data-lang="ar">طبيعي نقي</div><div class="stat-l" data-lang="en">Pure Natural</div><div class="stat-l" data-lang="tr">Saf Doğal</div></div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-bottle-ring2"></div>
+      <div class="about-bottle-ring"></div>
+      <div style="position:relative;z-index:2;filter:drop-shadow(0 40px 80px rgba(0,0,0,0.8)) drop-shadow(0 0 40px rgba(45,92,63,0.5));">
+        <div id="aboutBottleSvg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section class="exp-section" id="experience">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="sec-label" style="justify-content:center;margin-bottom:16px;">
+      <div class="sec-label-line"></div>
+      <span data-lang="ar">لماذا MAM</span>
+      <span data-lang="en">Why MAM</span>
+      <span data-lang="tr">Neden MAM</span>
+    </div>
+    <h2 class="sec-title" style="text-align:center;">
+      <span data-lang="ar">تجربة لا مثيل لها</span>
+      <span data-lang="en">An Unmatched Experience</span>
+      <span data-lang="tr">Eşsiz Bir Deneyim</span>
+    </h2>
+    <div class="sec-subtitle" style="text-align:center;">
+      <span data-lang="ar">ما يجعلنا مختلفين</span>
+      <span data-lang="en">What Sets Us Apart</span>
+      <span data-lang="tr">Bizi Farklı Kılan</span>
+    </div>
+    <div class="gold-divider" style="margin:0 auto 60px;"></div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-icon">🌿</div>
+        <div class="exp-title" data-lang="ar">مكونات طبيعية</div>
+        <div class="exp-title" data-lang="en">Natural Ingredients</div>
+        <div class="exp-title" data-lang="tr">Doğal Malzemeler</div>
+        <p class="exp-text">
+          <span data-lang="ar">نختار بعناية أفضل المكونات الطبيعية من جميع أنحاء العالم — العود من الهند، الورد من طائف، الزعفران من إيران.</span>
+          <span data-lang="en">We carefully select the finest natural ingredients from around the world — oud from India, rose from Taif, saffron from Iran.</span>
+          <span data-lang="tr">Dünyanın dört bir yanından en iyi doğal malzemeleri özenle seçiyoruz — Hindistan'dan oud, Taif'ten gül, İran'dan safran.</span>
+        </p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">✦</div>
+        <div class="exp-title" data-lang="ar">حرفية عالية</div>
+        <div class="exp-title" data-lang="en">Master Craftsmanship</div>
+        <div class="exp-title" data-lang="tr">Usta İşçiliği</div>
+        <p class="exp-text">
+          <span data-lang="ar">كل عطر يمر بعملية تطوير تستمر أشهراً حتى نصل للتوازن المثالي بين النوتات الرأسية والقلبية والقاعدية.</span>
+          <span data-lang="en">Each fragrance undergoes months of development to achieve the perfect balance between top, heart, and base notes.</span>
+          <span data-lang="tr">Her parfüm, üst, orta ve alt notlar arasında mükemmel dengeye ulaşmak için aylarca süren geliştirme sürecinden geçer.</span>
+        </p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">◈</div>
+        <div class="exp-title" data-lang="ar">تعبئة فاخرة</div>
+        <div class="exp-title" data-lang="en">Luxury Packaging</div>
+        <div class="exp-title" data-lang="tr">Lüks Ambalaj</div>
+        <p class="exp-text">
+          <span data-lang="ar">قوارير من الزجاج الكريستالي المصنوع يدوياً، تحفة فنية قبل أن تكون عطراً، تستحق أن تُعرض في أي مكان.</span>
+          <span data-lang="en">Hand-crafted crystal glass bottles — a work of art before a fragrance, worthy of display anywhere in your home.</span>
+          <span data-lang="tr">El yapımı kristal cam şişeler — bir parfümden önce bir sanat eseri, evinizin herhangi bir yerinde sergilenmeye değer.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section class="newsletter" id="contact">
+  <div class="sec-label" style="justify-content:center;margin-bottom:20px;">
+    <div class="sec-label-line"></div>
+    <span data-lang="ar">كن أول من يعلم</span>
+    <span data-lang="en">Be the First to Know</span>
+    <span data-lang="tr">İlk Sen Öğren</span>
+  </div>
+  <h2>
+    <span data-lang="ar">انضم لعالم MAM</span>
+    <span data-lang="en">Join the MAM World</span>
+    <span data-lang="tr">MAM Dünyasına Katıl</span>
+  </h2>
+  <p>
+    <span data-lang="ar">اشترك ليصلك أحدث إصداراتنا وعروضنا الحصرية</span>
+    <span data-lang="en">Subscribe to receive our latest releases and exclusive offers</span>
+    <span data-lang="tr">En son sürümlerimizi ve özel tekliflerimizi almak için abone olun</span>
+  </p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="email@example.com">
+    <button class="nl-btn" onclick="newsletterSubmit()">
+      <span data-lang-i="ar">اشترك</span>
+      <span data-lang-i="en">Subscribe</span>
+      <span data-lang-i="tr">Abone Ol</span>
+    </button>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">MAM</span>
+      <p>
+        <span data-lang="ar">عطور فاخرة تجمع بين روح الشرق وأناقة الغرب. كل قطرة قصة، كل عطر هوية.</span>
+        <span data-lang="en">Luxury perfumes bridging the soul of the East and the elegance of the West. Every drop a story, every fragrance an identity.</span>
+        <span data-lang="tr">Doğu'nun ruhu ile Batı'nın zarafetini birleştiren lüks parfümler. Her damla bir hikaye, her parfüm bir kimlik.</span>
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4 data-lang="ar">روابط</h4>
+      <h4 data-lang="en">Links</h4>
+      <h4 data-lang="tr">Bağlantılar</h4>
+      <ul>
+        <li><a href="#products" onclick="smoothScroll(event,'products')">
+          <span data-lang-i="ar">المجموعة</span>
+          <span data-lang-i="en">Collection</span>
+          <span data-lang-i="tr">Koleksiyon</span>
+        </a></li>
+        <li><a href="#about" onclick="smoothScroll(event,'about')">
+          <span data-lang-i="ar">قصتنا</span>
+          <span data-lang-i="en">Our Story</span>
+          <span data-lang-i="tr">Hikayemiz</span>
+        </a></li>
+        <li><a href="#experience" onclick="smoothScroll(event,'experience')">
+          <span data-lang-i="ar">التجربة</span>
+          <span data-lang-i="en">Experience</span>
+          <span data-lang-i="tr">Deneyim</span>
+        </a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@mamperfumes.com">hello@mamperfumes.com</a></li>
+        <li><a href="#">@mam.perfumes</a></li>
+        <li><a href="#">+90 XXX XXX XXXX</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 MAM Perfumes. All rights reserved.</p>
+    <div class="footer-social">
+      <a class="social-link" href="#">✦</a>
+      <a class="social-link" href="#">◈</a>
+      <a class="social-link" href="#">⊕</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CART ══ -->
+<div class="cart-overlay" id="cartOverlay" onclick="handleOverlay(event)">
+  <div class="cart-drawer">
+    <div class="cart-head">
+      <div class="cart-head-title">
+        <span data-lang-i="ar">سلة التسوق</span>
+        <span data-lang-i="en">Shopping Cart</span>
+        <span data-lang-i="tr">Alışveriş Sepeti</span>
+      </div>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-foot" id="cartFoot" style="display:none;">
+      <div class="cart-total-row">
+        <span class="cart-total-lbl" data-lang="ar">الإجمالي</span>
+        <span class="cart-total-lbl" data-lang="en">Total</span>
+        <span class="cart-total-lbl" data-lang="tr">Toplam</span>
+        <span class="cart-total-val" id="cartTotalVal">$0</span>
+      </div>
+      <button class="checkout-btn">
+        <span data-lang-i="ar">إتمام الطلب</span>
+        <span data-lang-i="en">Proceed to Checkout</span>
+        <span data-lang-i="tr">Ödemeye Geç</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══ DATA ══ */
+const products = [
+  {
+    id:1,
+    name:{ar:'إيوان',en:'Ivan',tr:'İvan'},
+    notes:{ar:'عود هندي، مسك أبيض، ورد طائفي، عنبر',en:'Indian Oud, White Musk, Taif Rose, Amber',tr:'Hint Oudu, Beyaz Misk, Taif Gülü, Amber'},
+    badge:{ar:'الأكثر مبيعاً',en:'Best Seller',tr:'En Çok Satan'},
+    price:185, ml:'75ml',
+    bg:'#152b1d', glowColor:'rgba(30,80,45,0.6)',
+    liquidColor:'#1a5c30', liquidColor2:'#0d3018',
+    capColor:'#1a1a22', labelBg:'#f2ebe0'
+  },
+  {
+    id:2,
+    name:{ar:'نخيل',en:'Nakhil',tr:'Nakhil'},
+    notes:{ar:'أمبرجريس، خشب الصندل، سيدار، مسك',en:'Ambergris, Sandalwood, Cedar, Musk',tr:'Amber, Sandal Ağacı, Sedir, Misk'},
+    badge:null,
+    price:165, ml:'75ml',
+    bg:'#0f1825', glowColor:'rgba(20,40,80,0.6)',
+    liquidColor:'#1a3a7a', liquidColor2:'#0d1f3d',
+    capColor:'#2a2020', labelBg:'#f0e8d8'
+  },
+  {
+    id:3,
+    name:{ar:'زعفران',en:"Za'faran",tr:'Safran'},
+    notes:{ar:'زعفران فارسي، بخور، لبان، خشب العود',en:'Persian Saffron, Incense, Frankincense, Oud',tr:'İran Safranı, Tütsü, Günlük, Oud'},
+    badge:{ar:'جديد',en:'New',tr:'Yeni'},
+    price:220, ml:'75ml',
+    bg:'#251500', glowColor:'rgba(100,60,0,0.5)',
+    liquidColor:'#8b5500', liquidColor2:'#4a2d00',
+    capColor:'#2a1a00', labelBg:'#f5e8cc'
+  },
+  {
+    id:4,
+    name:{ar:'ليلى',en:'Layla',tr:'Leyla'},
+    notes:{ar:'ورد دمشقي، ياسمين، توت أحمر، مسك وردي',en:'Damascus Rose, Jasmine, Red Berries, Pink Musk',tr:'Şam Gülü, Yasemin, Kırmızı Meyve, Pembe Misk'},
+    badge:null,
+    price:145, ml:'75ml',
+    bg:'#200a12', glowColor:'rgba(80,15,35,0.5)',
+    liquidColor:'#7a1535', liquidColor2:'#3d0a1a',
+    capColor:'#200a0a', labelBg:'#f5e0e5'
+  },
+  {
+    id:5,
+    name:{ar:'أسود',en:'Aswad',tr:'Siyah'},
+    notes:{ar:'جلد إيطالي، تبغ كوبي، بنكا، عود كامبوديا',en:'Italian Leather, Cuban Tobacco, Benzoin, Cambodian Oud',tr:'İtalyan Derisi, Küba Tütünü, Benzoin, Kamboçya Oudu'},
+    badge:{ar:'حصري',en:'Exclusive',tr:'Özel'},
+    price:260, ml:'75ml',
+    bg:'#0a0a12', glowColor:'rgba(40,40,70,0.5)',
+    liquidColor:'#1a1a2e', liquidColor2:'#0a0a18',
+    capColor:'#0a0a0a', labelBg:'#e8e0d0'
+  },
+  {
+    id:6,
+    name:{ar:'برلين',en:'Berlin',tr:'Berlin'},
+    notes:{ar:'برغموت إيطالي، خزامى بروفانس، مسك أبيض، سيدار',en:'Italian Bergamot, Provence Lavender, White Musk, Cedar',tr:'İtalyan Bergamot, Provans Lavenderi, Beyaz Misk, Sedir'},
+    badge:null,
+    price:155, ml:'75ml',
+    bg:'#0d1520', glowColor:'rgba(20,40,60,0.5)',
+    liquidColor:'#1a4a6e', liquidColor2:'#0d2535',
+    capColor:'#151520', labelBg:'#e5edf5'
+  }
+];
+
+/* ══ BOTTLE SVG GENERATOR ══ */
+function makeBottle(p, w=160, h=220, forHero=false) {
+  const liq = p.liquidColor;
+  const liq2 = p.liquidColor2;
+  const cap = p.capColor;
+  const label = p.labelBg;
+  const id = 'b'+p.id+(forHero?'h':'');
+  return `
+<svg width="${w}" height="${h}" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Liquid gradient -->
+    <linearGradient id="liqGrad${id}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${liq}" stop-opacity="1"/>
+      <stop offset="40%" stop-color="${liq}" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="${liq2}" stop-opacity="1"/>
+    </linearGradient>
+    <!-- Glass highlight -->
+    <linearGradient id="glassHL${id}" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
+      <stop offset="15%" stop-color="rgba(255,255,255,0.05)"/>
+      <stop offset="80%" stop-color="rgba(255,255,255,0.02)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.15)"/>
+    </linearGradient>
+    <!-- Glass body gradient -->
+    <linearGradient id="glassBody${id}" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.12)"/>
+      <stop offset="8%" stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="90%" stop-color="rgba(255,255,255,0.03)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.1)"/>
+    </linearGradient>
+    <!-- Cap gradient -->
+    <linearGradient id="capGrad${id}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a3a3a"/>
+      <stop offset="50%" stop-color="${cap}"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <!-- Label gradient -->
+    <linearGradient id="labelGrad${id}" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="${label}"/>
+      <stop offset="100%" stop-color="${label}" stop-opacity="0.92"/>
+    </linearGradient>
+    <!-- Reflection -->
+    <linearGradient id="reflect${id}" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <!-- Bottom reflection -->
+    <linearGradient id="bottomRef${id}" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.06)"/>
+    </linearGradient>
+    <!-- Gold frame gradient -->
+    <linearGradient id="goldFrame${id}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8cc8a"/>
+      <stop offset="50%" stop-color="#c8a96e"/>
+      <stop offset="100%" stop-color="#a07840"/>
+    </linearGradient>
+    <!-- Neck gradient -->
+    <linearGradient id="neckGrad${id}" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.05)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.15)"/>
+    </linearGradient>
+    <filter id="softShadow${id}">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.4)" flood-opacity="1"/>
+    </filter>
+    <clipPath id="bottleClip${id}">
+      <path d="M38 68 Q28 88 26 110 L26 195 Q26 204 38 204 L122 204 Q134 204 134 195 L134 110 Q132 88 122 68 L112 50 L48 50 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- === CAP === -->
+  <!-- Cap body -->
+  <rect x="44" y="12" width="72" height="38" rx="6" fill="url(#capGrad${id})"/>
+  <!-- Cap highlight left -->
+  <rect x="44" y="12" width="8" height="38" rx="4" fill="rgba(255,255,255,0.08)"/>
+  <!-- Cap shine top -->
+  <rect x="44" y="12" width="72" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <!-- Cap bottom band (chrome) -->
+  <rect x="46" y="46" width="68" height="6" rx="1" fill="url(#goldFrame${id})" opacity="0.6"/>
+
+  <!-- === NECK === -->
+  <!-- Neck collar gold ring -->
+  <rect x="52" y="44" width="56" height="5" rx="1" fill="url(#goldFrame${id})"/>
+  <!-- Neck glass -->
+  <path d="M55 49 L55 52 Q55 58 48 68 L112 68 Q105 58 105 52 L105 49 Z" fill="url(#neckGrad${id})" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+  <!-- Neck liquid fill -->
+  <path d="M58 50 L58 52 Q58 57 52 66 L108 66 Q102 57 102 52 L102 50 Z" fill="url(#liqGrad${id})" opacity="0.7"/>
+  <!-- Neck highlight -->
+  <rect x="55" y="49" width="8" height="19" fill="rgba(255,255,255,0.12)"/>
+
+  <!-- === BODY GLASS (base shape) === -->
+  <path d="M38 68 Q28 88 26 110 L26 195 Q26 204 38 204 L122 204 Q134 204 134 195 L134 110 Q132 88 122 68 L112 50 L48 50 Z"
+    fill="url(#glassBody${id})"
+    stroke="rgba(255,255,255,0.15)"
+    stroke-width="1"/>
+
+  <!-- === LIQUID FILL (clipped) === -->
+  <g clip-path="url(#bottleClip${id})">
+    <rect x="26" y="68" width="108" height="140" fill="url(#liqGrad${id})"/>
+    <!-- Liquid surface shimmer -->
+    <ellipse cx="80" cy="72" rx="50" ry="5" fill="rgba(255,255,255,0.12)"/>
+    <!-- Bottom gradient -->
+    <rect x="26" y="170" width="108" height="34" fill="url(#bottomRef${id})"/>
+  </g>
+
+  <!-- === GLASS OVERLAY (highlights on top of liquid) === -->
+  <!-- Left edge highlight (bright) -->
+  <path d="M38 68 Q28 88 26 110 L26 195 Q26 204 38 204 L44 204 L40 195 L38 110 L40 88 Z"
+    fill="rgba(255,255,255,0.18)"/>
+  <!-- Right edge highlight -->
+  <path d="M122 68 Q132 88 134 110 L134 195 Q134 204 122 204 L118 204 L120 195 L122 110 L120 88 Z"
+    fill="rgba(255,255,255,0.10)"/>
+  <!-- Top reflection band -->
+  <path d="M40 70 Q30 90 29 108 L37 106 Q40 90 48 72 Z"
+    fill="rgba(255,255,255,0.14)"/>
+  <!-- Subtle center glare -->
+  <path d="M55 72 Q52 100 52 140 L58 140 Q58 100 60 72 Z"
+    fill="rgba(255,255,255,0.06)"/>
+  <!-- Glass corner bevel bottom right -->
+  <path d="M120 195 Q130 200 122 204 L118 204 Z"
+    fill="rgba(255,255,255,0.07)"/>
+
+  <!-- === LABEL === -->
+  <rect x="34" y="88" width="92" height="72" rx="2" fill="url(#labelGrad${id})" filter="url(#softShadow${id})"/>
+  <!-- Label gold border outer -->
+  <rect x="34" y="88" width="92" height="72" rx="2" fill="none" stroke="url(#goldFrame${id})" stroke-width="1.5"/>
+  <!-- Label gold border inner -->
+  <rect x="38" y="92" width="84" height="64" rx="1" fill="none" stroke="url(#goldFrame${id})" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Arabic name -->
+  <text x="80" y="120" text-anchor="middle"
+    font-family="'Noto Serif Arabic', serif" font-size="18" font-weight="600"
+    fill="#1a1a1a" letter-spacing="1">${p.name.ar}</text>
+  <!-- MAM brand -->
+  <text x="80" y="136" text-anchor="middle"
+    font-family="'Cinzel', serif" font-size="9" font-weight="700"
+    fill="#2a2a2a" letter-spacing="3">MAM</text>
+  <!-- PERFUMES subtitle -->
+  <text x="80" y="148" text-anchor="middle"
+    font-family="'Cinzel', serif" font-size="6"
+    fill="#666" letter-spacing="4">PERFUMES</text>
+
+  <!-- === BOTTOM GLASS EFFECT === -->
+  <!-- Bottom edge -->
+  <path d="M26 192 L134 192 L134 195 Q134 204 122 204 L38 204 Q26 204 26 195 Z"
+    fill="rgba(0,0,0,0.25)"/>
+  <!-- Bottom reflection -->
+  <path d="M38 204 Q26 204 26 195 L26 192 L36 198 Z"
+    fill="rgba(255,255,255,0.05)"/>
+
+  <!-- === SPRAYER HEAD (on top of cap) === -->
+  <rect x="74" y="6" width="12" height="8" rx="2" fill="url(#capGrad${id})"/>
+  <rect x="76" y="2" width="8" height="7" rx="1.5" fill="url(#capGrad${id})"/>
+  <rect x="76" y="2" width="8" height="2" rx="1" fill="rgba(255,255,255,0.15)"/>
+</svg>`;
+}
+
+/* ══ HERO BOTTLE ══ */
+function renderHeroBottle() {
+  const p = products[0];
+  document.getElementById('heroBotleSvg').innerHTML = makeBottle(p, 240, 330, true);
+}
+
+/* ══ ABOUT BOTTLE ══ */
+function renderAboutBottle() {
+  const p = products[2];
+  document.getElementById('aboutBottleSvg').innerHTML = makeBottle(p, 200, 275, false);
+}
+
+/* ══ PRODUCTS GRID ══ */
+let currentLang = 'ar';
+let cart = {};
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.map(p => {
+    const inCart = cart[p.id];
+    return `
+    <div class="p-card">
+      <div class="p-card-visual">
+        <div class="p-card-bg" style="background:radial-gradient(ellipse 100% 120% at 50% 30%, ${p.bg} 0%, var(--ink) 100%);position:absolute;inset:0;"></div>
+        <!-- Ambient glow -->
+        <div style="position:absolute;width:200px;height:200px;background:radial-gradient(circle,${p.glowColor} 0%,transparent 70%);top:30%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:1;"></div>
+        ${p.badge ? `<div class="p-badge"><span data-lang-i="ar">${p.badge.ar}</span><span data-lang-i="en">${p.badge.en}</span><span data-lang-i="tr">${p.badge.tr}</span></div>` : ''}
+        <div class="p-bottle-wrap" style="position:relative;z-index:2;">
+          ${makeBottle(p, 130, 178)}
+        </div>
+      </div>
+      <div class="p-info">
+        <div class="p-name-ar">${p.name[currentLang]}</div>
+        <div class="p-name-en">${p.name.en}</div>
+        <div class="p-notes">${p.notes[currentLang]}</div>
+        <div class="p-footer">
+          <div class="p-price">
+            <div class="p-price-main">$${p.price}</div>
+            <div class="p-price-sub">EDP · ${p.ml}</div>
+          </div>
+          <button class="add-to-cart ${inCart?'done':''}" id="addbtn-${p.id}" onclick="addToCart(${p.id})">
+            <span>${inCart ? '✓' : (currentLang==='ar'?'أضف للسلة':currentLang==='en'?'Add to Cart':'Sepete Ekle')}</span>
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  applyLang();
+}
+
+/* ══ CART ══ */
+function addToCart(id) {
+  const p = products.find(x=>x.id===id);
+  if (cart[id]) cart[id].qty++;
+  else cart[id] = { product: p, qty: 1 };
+  updateBadge();
+  const btn = document.getElementById('addbtn-'+id);
+  if (btn) { btn.classList.add('done'); btn.querySelector('span').textContent = '✓'; }
+  const msgs = { ar:'تمت الإضافة ✓', en:'Added to Cart ✓', tr:'Sepete Eklendi ✓' };
+  showToast(msgs[currentLang]);
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  updateBadge(); renderCart();
+}
+
+function changeQty(id, d) {
+  if (!cart[id]) return;
+  cart[id].qty += d;
+  if (cart[id].qty <= 0) { removeFromCart(id); return; }
+  updateBadge(); renderCart();
+}
+
+function updateBadge() {
+  document.getElementById('cartBadge').textContent = Object.values(cart).reduce((s,x)=>s+x.qty,0);
+}
+
+function renderCart() {
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  const items = Object.values(cart);
+  if (!items.length) {
+    const emptyMsgs = { ar:'سلتك فارغة حالياً', en:'Your cart is empty', tr:'Sepetiniz boş' };
+    body.innerHTML = `<div class="cart-empty-msg">${emptyMsgs[currentLang]}</div>`;
+    foot.style.display = 'none'; return;
+  }
+  body.innerHTML = items.map(({product:p, qty}) => `
+    <div class="cart-item">
+      <div class="cart-item-visual">${makeBottle(p,50,68)}</div>
+      <div class="cart-item-details">
+        <div class="cart-item-name">${p.name[currentLang]}</div>
+        <div class="cart-item-sub">${p.name.en} · ${p.ml}</div>
+        <div class="cart-item-price">$${p.price * qty}</div>
+        <div class="cart-qty-ctrl">
+          <button class="qty-b" onclick="changeQty(${p.id},-1)">−</button>
+          <span class="qty-n">${qty}</span>
+          <button class="qty-b" onclick="changeQty(${p.id},1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-del" onclick="removeFromCart(${p.id})">✕</button>
+    </div>
+  `).join('');
+  const total = items.reduce((s,{product:p,qty})=>s+p.price*qty, 0);
+  document.getElementById('cartTotalVal').textContent = '$'+total;
+  foot.style.display = 'block';
+  applyLang();
+}
+
+function openCart() {
+  renderCart();
+  document.getElementById('cartOverlay').classList.add('open');
+}
+function closeCart() { document.getElementById('cartOverlay').classList.remove('open'); }
+function handleOverlay(e) { if(e.target===document.getElementById('cartOverlay')) closeCart(); }
+
+/* ══ TOAST ══ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* ══ LANGUAGE ══ */
+function applyLang() {
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.dataset.lang === currentLang ? 'block' : 'none';
+  });
+  document.querySelectorAll('[data-lang-i]').forEach(el => {
+    el.style.display = el.dataset.langI === currentLang ? 'inline' : 'none';
+  });
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.body.className = 'lang-' + lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  renderProducts();
+  applyLang();
+}
+
+/* ══ MARQUEE ══ */
+function renderMarquee() {
+  const items = ['إيوان','Ivan','NAKHIL','زعفران','Za\'faran','LAYLA','أسود','Aswad','BERLIN','نخيل','Leyla','إيوان'];
+  const content = items.map(i => `<span>${i}</span><span class="marquee-sep">✦</span>`).join('');
+  const el = document.getElementById('marqueeInner');
+  el.innerHTML = content + content; // duplicate for seamless loop
+}
+
+/* ══ SMOOTH SCROLL ══ */
+function smoothScroll(e, id) {
+  e.preventDefault();
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+/* ══ NEWSLETTER ══ */
+function newsletterSubmit() {
+  const msgs = { ar:'شكراً! تم التسجيل ✓', en:'Thank you! Subscribed ✓', tr:'Teşekkürler! Abone oldunuz ✓' };
+  showToast(msgs[currentLang]);
+}
+
+/* ══ CURSOR ══ */
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('curRing');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.left = mx+'px'; cur.style.top = my+'px';
+});
+function animCursor() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  curRing.style.left = rx+'px'; curRing.style.top = ry+'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+document.querySelectorAll('button,a,[onclick]').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cur.style.width='14px'; cur.style.height='14px';
+    curRing.style.width='50px'; curRing.style.height='50px';
+    curRing.style.borderColor='rgba(200,169,110,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cur.style.width='8px'; cur.style.height='8px';
+    curRing.style.width='36px'; curRing.style.height='36px';
+    curRing.style.borderColor='rgba(200,169,110,0.5)';
+  });
+});
+
+/* ══ INIT ══ */
+renderHeroBottle();
+renderAboutBottle();
+renderProducts();
+renderMarquee();
+applyLang();
+</script>
+</body>
+</html>
